@@ -21,6 +21,7 @@ public class FloatersBurst : MonoBehaviour
     NativeArray<float> errorBuffer;
     NativeArray<float3> candidatePositionBuffer;
     NativeArray<float3> projectedPositionWSBuffer;
+    NativeArray<float3> normalWSBuffer;
     NativeArray<float3> directionBuffer;
     NativeArray<int> stepCountBuffer;
 
@@ -39,6 +40,7 @@ public class FloatersBurst : MonoBehaviour
         errorBuffer = new NativeArray<float>(numObjects, Allocator.Persistent);
         candidatePositionBuffer = new NativeArray<float3>(numObjects, Allocator.Persistent);
         projectedPositionWSBuffer = new NativeArray<float3>(numObjects, Allocator.Persistent);
+        normalWSBuffer = new NativeArray<float3>(numObjects, Allocator.Persistent);
         directionBuffer = new NativeArray<float3>(numObjects, Allocator.Persistent);
         stepCountBuffer = new NativeArray<int>(numObjects, Allocator.Persistent);
         
@@ -79,6 +81,7 @@ public class FloatersBurst : MonoBehaviour
         searchJob.errorBuffer = errorBuffer;
         searchJob.candidateLocationWSBuffer = candidatePositionBuffer;
         searchJob.projectedPositionWSBuffer = projectedPositionWSBuffer;
+        searchJob.normalWSBuffer = normalWSBuffer;
         searchJob.directionBuffer = directionBuffer;
         searchJob.stepCountBuffer = stepCountBuffer;
 
@@ -97,6 +100,7 @@ public class FloatersBurst : MonoBehaviour
         errorBuffer.Dispose();
         candidatePositionBuffer.Dispose();
         projectedPositionWSBuffer.Dispose();
+        normalWSBuffer.Dispose();
         directionBuffer.Dispose();
         stepCountBuffer.Dispose();
     }

@@ -20,6 +20,7 @@ namespace WaterInteraction
         NativeArray<float3> targetPositionBuffer;
         // Output job parameters
         NativeArray<float3> projectedPositionWorldSpaceBuffer;
+        NativeArray<float3> normalWSBuffer;
         NativeArray<float3> candidatePositionBuffer;
         NativeArray<float3> directionBuffer;
         NativeArray<int> stepCountBuffer;
@@ -59,6 +60,7 @@ namespace WaterInteraction
             numberOfGridPoints = baseGridMesh.vertices.Length; 
             // Allocate the buffers
             projectedPositionWorldSpaceBuffer = new NativeArray<float3>(numberOfGridPoints, Allocator.Persistent);
+            normalWSBuffer = new NativeArray<float3>(numberOfGridPoints, Allocator.Persistent);
             candidatePositionBuffer = new NativeArray<float3>(numberOfGridPoints, Allocator.Persistent);
             targetPositionBuffer = new NativeArray<float3>(numberOfGridPoints, Allocator.Persistent);
             directionBuffer = new NativeArray<float3>(numberOfGridPoints, Allocator.Persistent);
@@ -160,6 +162,7 @@ namespace WaterInteraction
                 errorBuffer = errorBuffer,
                 candidateLocationWSBuffer = candidatePositionBuffer,
                 projectedPositionWSBuffer = projectedPositionWorldSpaceBuffer,
+                normalWSBuffer = normalWSBuffer,
                 directionBuffer = directionBuffer,
                 stepCountBuffer = stepCountBuffer
             };
@@ -262,6 +265,7 @@ namespace WaterInteraction
         private void DisposeRoutine() 
         {
             projectedPositionWorldSpaceBuffer.Dispose();
+            normalWSBuffer.Dispose();
             candidatePositionBuffer.Dispose();
             targetPositionBuffer.Dispose();
             directionBuffer.Dispose();

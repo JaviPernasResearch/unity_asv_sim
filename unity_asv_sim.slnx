@@ -1,0 +1,9 @@
+﻿<Solution>
+  <Project Path="PhysicsAssembly.csproj" />
+  <Project Path="SensorAssembly.csproj" />
+  <Project Path="ControllerAssembly.csproj" />
+  <Project Path="UtilityAssembly.csproj" />
+  <Project Path="ScriptsAssembly.csproj" />
+  <Project Path="EditorAssembly.csproj" />
+  <Project Path="InputSystemAssembly.csproj" />
+</Solution>
